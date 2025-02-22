@@ -21,6 +21,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+         'role', 
+         'phone_number'
     ];
 
     /**
@@ -45,4 +47,11 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    // Check if the user is an admin
+    public function isAdmin()
+    {
+        return str_ends_with($this->email, '@admin.com');
+    }
+    
 }
