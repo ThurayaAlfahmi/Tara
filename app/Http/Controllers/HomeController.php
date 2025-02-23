@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\locations;
+use App\Models\cars;
+use App\Models\bookings;
+
+
 
 class HomeController extends Controller
 {
@@ -46,7 +51,12 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function adminDashboard()
-    {
-        return view('admin.index'); 
+    {  $cars = cars::latest()->take(3)->get(); // Get only 3 latest cars
+        $locations = locations::latest()->take(3)->get(); // Get only 3 latest locations
+    
+        return view('admin.index', compact('cars', 'locations'));
+    
+        // return view('admin.index', compact('locations', 'cars', 'bookings'));
+       
     }
 } 
