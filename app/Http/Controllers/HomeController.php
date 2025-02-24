@@ -37,8 +37,9 @@ class HomeController extends Controller
             if ($user->role === 'admin') {
                 return redirect()->route('admin.index'); // Admin dashboard
             }
-
-            return view('user.index'); // Regular user dashboard
+            
+    
+             // Regular user dashboard
         }
 
         // If the user is not authenticated, redirect to login
@@ -59,4 +60,5 @@ class HomeController extends Controller
         // return view('admin.index', compact('locations', 'cars', 'bookings'));
        
     }
+
 } 

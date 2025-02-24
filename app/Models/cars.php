@@ -18,8 +18,10 @@ class cars extends Model
         'image_url',
         'location_id',
     ];
+    
+
     //
-    protected $table = 'cars';
+    // protected $table = 'cars';
 
     public function location()
     {
@@ -29,7 +31,7 @@ class cars extends Model
 
     public function bookings()
     {
-        return $this->hasMany(bookings::class);
+        return $this->hasMany(bookings::class, 'car_id');
     }
 
     public function reviews()
