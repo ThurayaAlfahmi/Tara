@@ -54,19 +54,19 @@ Route::delete('admin/locations/{location}', [LocationsController::class, 'destro
 //bookings
 // Display all bookings for the authenticated user
 Route::get('/bookings', [BookingsController::class, 'index'])->name('bookings.index');
-Route::get('/bookings/create', [BookingsController::class, 'create'])->name('bookings.create');
-Route::post('/bookings', [BookingsController::class, 'store'])->name('bookings.store');
+// Route::get('/bookings/create', [BookingsController::class, 'create'])->name('bookings.create');
+// Route::post('/bookings', [BookingsController::class, 'store'])->name('bookings.store');
 Route::get('/bookings/{id}', [BookingsController::class, 'show'])->name('bookings.show');
-Route::get('/bookings/{id}/edit', [BookingsController::class, 'edit'])->name('bookings.edit');
-Route::put('/bookings/{id}', [BookingsController::class, 'update'])->name('bookings.update');
-Route::delete('/bookings/{booking}', [BookingsController::class, 'destroy'])->name('bookings.destroy');
+// Route::get('/bookings/{id}/edit', [BookingsController::class, 'edit'])->name('bookings.edit');
+// Route::put('/bookings/{id}', [BookingsController::class, 'update'])->name('bookings.update');
+// Route::delete('/bookings/{booking}', [BookingsController::class, 'destroy'])->name('bookings.destroy');
 
 
 //payments
 // Payment routes
-Route::get('payments/create/{bookingId}', [PaymentsController::class, 'create'])->name('payments.create');
-Route::post('payments', [PaymentsController::class, 'store'])->name('payments.store');
-Route::get('payments/{id}', [PaymentsController::class, 'show'])->name('payments.show');
+// Route::get('payments/create/{bookingId}', [PaymentsController::class, 'create'])->name('payments.create');
+// Route::post('payments', [PaymentsController::class, 'store'])->name('payments.store');
+// Route::get('payments/{id}', [PaymentsController::class, 'show'])->name('payments.show');
 
 //user
 

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\locations;
 use App\Models\cars;
 use App\Models\bookings;
+use App\Models\payments;
 
 
 
@@ -52,12 +53,12 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function adminDashboard()
-    {  $cars = cars::latest()->take(3)->get(); // Get only 3 latest cars
-        $locations = locations::latest()->take(3)->get(); // Get only 3 latest locations
+    {  $cars = Cars::latest()->take(3)->get();
+        $locations = Locations::latest()->take(3)->get();
+        $bookings = Bookings::with(['car', 'pickupLocation', 'dropoffLocation'])->latest()->take(3)->get();
+        $payments = Payments::latest()->take(3)->get();
     
-        return view('admin.index', compact('cars', 'locations'));
-    
-        // return view('admin.index', compact('locations', 'cars', 'bookings'));
+        return view('admin.index', compact('cars', 'locations', 'bookings', 'payments'));
        
     }
 

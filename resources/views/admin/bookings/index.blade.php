@@ -6,7 +6,6 @@
     @if(session('success'))
         <div class="alert alert-success">{{ session('success') }}</div>
     @endif
-    <a href="{{ route('bookings.create') }}" class="btn btn-primary mb-3">New Booking</a>
     <table class="table">
         <thead>
             <tr>
@@ -16,25 +15,30 @@
                 <th>Start Date</th>
                 <th>End Date</th>
                 <th>Status</th>
-                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
             @foreach($bookings as $booking)
-            <tr>
+            <tr class="clickable-row" data-href="{{ route('bookings.show', $booking->id) }}" style="cursor: pointer;">
                 <td>{{ $booking->car->name }}</td>
-                <td>{{ $booking->pickupLocation->name }}</td>
-                <td>{{ $booking->dropoffLocation->name }}</td>
+                <td>{{ $booking->pickupLocation->city }} - {{ $booking->pickupLocation->branch_name }}</td>
+                <td>{{ $booking->dropoffLocation->city }} - {{ $booking->dropoffLocation->branch_name }}</td>  
                 <td>{{ $booking->start_date }}</td>
                 <td>{{ $booking->end_date }}</td>
-                <td>{{ ucfirst($booking->status) }}</td>
-                <td>
-                    <a href="{{ route('bookings.show', $booking->id) }}" class="btn btn-secondary">View More Locations</a>
-
-                </td>
+                <td>{{ ucfirst($booking->status) }}</td>  
             </tr>
             @endforeach
         </tbody>
     </table>
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        document.querySelectorAll(".clickable-row").forEach(row => {
+            row.addEventListener("click", function() {
+                window.location.href = this.dataset.href;
+            });
+        });
+    });
+</script>
 @endsection
