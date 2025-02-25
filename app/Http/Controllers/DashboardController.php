@@ -38,5 +38,6 @@ public function searchCars(Request $request)
     return view('available-cars', compact('availableCars'));
 }
 
+
     }
     

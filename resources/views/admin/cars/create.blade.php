@@ -1,4 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.admin')
+
+
 
 @section('content')
 <div class="container">
@@ -64,7 +66,18 @@
                 <option value="0">Not Available</option>
             </select>
         </div>
-
+        <div class="mb-3">
+            <label class="form-label">Car Type</label>
+            <select name="car_type" class="form-control" required>
+                <option value="" disabled selected>Select Car Type</option>
+                <option value="Family Small">Family Small</option>
+                <option value="Family Large">Family Large</option>
+                <option value="Sports">Sports</option>
+                <option value="Luxury">Luxury</option>
+                <option value="Economy">Economy</option>
+            </select>
+        </div>
+        
         <div class="mb-3">
             <label class="form-label">Car Image</label>
             <input type="file" name="image" class="form-control">
@@ -74,3 +87,4 @@
     </form>
 </div>
 @endsection
+

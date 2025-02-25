@@ -1,6 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
+
+
 <div class="container">
     <h2>My Bookings</h2>
     @if(session('success'))
@@ -30,6 +32,7 @@
             @endforeach
         </tbody>
     </table>
+    <a href="{{ route('admin.index') }}" class="btn btn-secondary mb-3">Back</a>
 </div>
 
 <script>

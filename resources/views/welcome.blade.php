@@ -34,7 +34,7 @@
     <div class="flex-container">
         @foreach($cars as $car)
             <div class="card">
-                <img src="{{ $car->image }}" alt="{{ $car->model }}">
+                <td><img src="{{ asset('storage/' . $car->image_url) }}" alt="Car Image" width="100"></td>
                 <h3>{{ $car->model }}</h3>
                 <p>{{ $car->make }}</p>
                 <p>{{ $car->year }}</p>

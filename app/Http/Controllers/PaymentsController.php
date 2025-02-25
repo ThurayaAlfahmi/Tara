@@ -15,7 +15,7 @@ class PaymentsController extends Controller
     {
         //
         $payments = payments::latest()->get() ;// List all payments
-        return view('payments.index', compact('payments'));
+        return view('admin.payments.index', compact('payments'));
     }
 
     /**

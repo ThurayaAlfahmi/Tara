@@ -1,6 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
+
+
 <div class="container">
     <h1>Edit Location</h1>
 

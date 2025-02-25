@@ -1,6 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
+
+
 <div class="container">
     <h2>Booking Details</h2>
 
@@ -8,10 +10,11 @@
         <strong>Car:</strong> {{ $booking->car->name }}
     </div>
     <div class="mb-3">
-        <strong>Pickup Location:</strong> {{ $booking->pickupLocation->name }}
+        <strong>Pickup Location:</strong> {{ $booking->pickupLocation->city }} - {{ $booking->pickupLocation->branch_name }}
     </div>
+
     <div class="mb-3">
-        <strong>Drop-off Location:</strong> {{ $booking->dropoffLocation->name }}
+        <strong>Drop-off Location:</strong>{{ $booking->dropoffLocation->city }} - {{ $booking->dropoffLocation->branch_name }}
     </div>
     <div class="mb-3">
         <strong>Start Date:</strong> {{ $booking->start_date }}
@@ -22,12 +25,6 @@
     <div class="mb-3">
         <strong>Status:</strong> {{ ucfirst($booking->status) }}
     </div>
-
-    <a href="{{ route('bookings.edit', $booking->id) }}" class="btn btn-warning">Edit</a>
-    <form action="{{ route('bookings.destroy', $booking) }}" method="POST" style="display:inline;">
-        @csrf
-        @method('DELETE')
-        <button type="submit" class="btn btn-danger">Cancel</button>
-    </form>
+    <a href="{{ route('bookings.index') }}" class="btn btn-secondary mb-3">Back</a>
 </div>
 @endsection

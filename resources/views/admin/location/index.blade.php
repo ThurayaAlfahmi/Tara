@@ -1,6 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
+
+
 <div class="container">
     <h1>All Locations</h1>
     <a href="{{ route('admin.location.create') }}" class="btn btn-primary mb-3">Add New Location</a>
@@ -29,5 +31,6 @@
             @endforeach
         </tbody>
     </table>
+    <a href="{{ route('admin.index') }}" class="btn btn-secondary mb-3">Back</a>
 </div>
 @endsection

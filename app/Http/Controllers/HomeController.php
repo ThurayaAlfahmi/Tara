@@ -33,19 +33,20 @@ class HomeController extends Controller
         // Check if the user is authenticated
         if (Auth::check()) {
             $user = Auth::user(); // Get the authenticated user
-
+    
             // Redirect based on role
             if ($user->role === 'admin') {
-                return redirect()->route('admin.index'); // Admin dashboard
+                return redirect()->route('admin.index'); // Redirect to admin dashboard
             }
-            
     
-             // Regular user dashboard
+            // Regular user dashboard (Home)
+            return redirect()->route('home');
         }
-
+    
         // If the user is not authenticated, redirect to login
         return redirect()->route('login');
     }
+    
 
     /**
      * Show the admin dashboard.

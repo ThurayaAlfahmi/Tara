@@ -23,6 +23,7 @@ return new class extends Migration
             $table->boolean('availability')->default(true);
             $table->string('image_url')->nullable();
             $table->foreignId('location_id')->constrained()->onDelete('cascade');
+            $table->string('car_type')->nullable();
             $table->timestamps();
         });
     }

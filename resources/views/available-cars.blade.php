@@ -4,6 +4,7 @@
 
 @foreach($availableCars as $car)
     <div>
+        <td><img src="{{ asset('storage/' . $car->image_url) }}" alt="Car Image" width="100"></td>
         <h3>{{ $car->name }}</h3>
         <p>{{ $car->description }}</p>
         <p>Brand: {{ $car->brand }}</p>

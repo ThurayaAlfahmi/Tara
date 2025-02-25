@@ -1,4 +1,5 @@
-@extends('layouts.app')
+@extends('layouts.admin')
+
 
 @section('content')
 <div class="container">
@@ -67,6 +68,17 @@
                 <option value="0" {{ !$car->availability ? 'selected' : '' }}>Not Available</option>
             </select>
         </div>
+        <div class="mb-3">
+            <label class="form-label">Car Type</label>
+            <select name="car_type" class="form-control">
+                    <option value="Family Small"{{ $car->car_type ? 'selected' : '' }}>Family Small</option>
+                    <option value="Family Large"{{ $car->car_type ? 'selected' : '' }}>Family Large</option>
+                    <option value="Sports"{{ $car->car_type ? 'selected' : '' }}>Sports</option>
+                    <option value="Luxury"{{ $car->car_type ? 'selected' : '' }}>Luxury</option>
+                    <option value="Economy"{{ $car->car_type ? 'selected' : '' }}>Economy</option>
+                </select>
+        </div>
+        
 
         <div class="mb-3">
             <label class="form-label">Car Image</label>
@@ -80,3 +92,4 @@
     </form>
 </div>
 @endsection
+

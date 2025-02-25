@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
 <div class="container">
@@ -7,6 +7,7 @@
     <table class="table table-bordered">
         <thead>
             <tr>
+                <th>Image</th>
                 <th>Name</th>
                 <th>Brand</th>
                 <th>Location</th>
@@ -16,6 +17,7 @@
         <tbody>
             @foreach($cars as $car)
             <tr>
+                <td><img src="{{ asset('storage/' . $car->image_url) }}" alt="Car Image" width="100"></td>
                 <td>{{ $car->name }}</td>
                 <td>{{ $car->brand }}</td>
                 <td>{{ $car->location->city }}</td>
@@ -31,5 +33,7 @@
             @endforeach
         </tbody>
     </table>
+    <a href="{{ route('admin.index') }}" class="btn btn-secondary mb-3">Back</a>
 </div>
 @endsection
+

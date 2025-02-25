@@ -54,6 +54,7 @@ class CarsController extends Controller
             'availability' => $request->availability ?? true,
             'image_url' => $imagePath,
             'location_id' => $request->location_id,
+            'car_type' => $request->car_type,
         ]);
     
      
@@ -93,6 +94,7 @@ class CarsController extends Controller
             'daily_rate' => $request->daily_rate,
             'availability' => $request->availability ?? true,
             'location_id' => $request->location_id,
+            'car_type' => $request->car_type,
         ]);
         $car->save();
         return redirect()->route('admin.cars.index')->with('status', 'Car updated successfully!');

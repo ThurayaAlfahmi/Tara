@@ -24,15 +24,9 @@
                             <a class="nav-link" href="{{ route('register') }}">Register</a>
                         </li>
                     @else
-                        @if(auth()->user()->role == 'admin')
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('admin.index') }}">Dashboard</a>
-                            </li>
-                        @else
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('home') }}">Home</a>
                             </li>
-                        @endif
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('logout') }}"
                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

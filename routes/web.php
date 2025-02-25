@@ -17,7 +17,10 @@ Route::get('/', [DashboardController::class, 'index'])->name('welcome');
 Auth::routes();
 
 // Home route for regular users
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/home', [DashboardController::class, 'index'])->name('home');
+
+
+Route::get('/admin', [HomeController::class, 'index'])->name('admindashboard');
 
 
 // Admin dashboard route
@@ -54,19 +57,15 @@ Route::delete('admin/locations/{location}', [LocationsController::class, 'destro
 //bookings
 // Display all bookings for the authenticated user
 Route::get('/bookings', [BookingsController::class, 'index'])->name('bookings.index');
-// Route::get('/bookings/create', [BookingsController::class, 'create'])->name('bookings.create');
-// Route::post('/bookings', [BookingsController::class, 'store'])->name('bookings.store');
 Route::get('/bookings/{id}', [BookingsController::class, 'show'])->name('bookings.show');
-// Route::get('/bookings/{id}/edit', [BookingsController::class, 'edit'])->name('bookings.edit');
-// Route::put('/bookings/{id}', [BookingsController::class, 'update'])->name('bookings.update');
-// Route::delete('/bookings/{booking}', [BookingsController::class, 'destroy'])->name('bookings.destroy');
+
 
 
 //payments
-// Payment routes
-// Route::get('payments/create/{bookingId}', [PaymentsController::class, 'create'])->name('payments.create');
-// Route::post('payments', [PaymentsController::class, 'store'])->name('payments.store');
-// Route::get('payments/{id}', [PaymentsController::class, 'show'])->name('payments.show');
+Route::get('/admin/payments', [PaymentsController::class, 'index'])->name('admin.payments.index');
+
+
+
 
 //user
 
@@ -74,7 +73,6 @@ Route::get('/search-cars', [DashboardController::class, 'searchCars'])->name('se
 Route::get('/book-car/{car}', [BookingsController::class, 'showBookingForm'])->name('book.car')->middleware('auth');
 Route::post('/confirm-booking/{car}', [BookingsController::class, 'confirmBooking'])->name('confirm.booking')->middleware('auth');
 Route::post('/payment/{booking}', [PaymentsController::class, 'showPaymentForm'])->name('payment.form')->middleware('auth');
-Route::post('/submit-review/{car}', [ReviewsController::class, 'submitReview'])->name('submit.review')->middleware('auth');
 Route::get('/booking-summary/{booking}', [BookingsController::class, 'showBookingSummary'])->name('booking.summary');
 Route::get('/payment/{booking}', [PaymentsController::class, 'showPaymentForm'])->name('payment.form');
 Route::post('/process-payment/{booking}', [PaymentsController::class, 'processPayment'])->name('process.payment');
