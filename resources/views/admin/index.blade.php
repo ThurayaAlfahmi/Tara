@@ -8,21 +8,21 @@
                    
 
                     <!-- Cars Section -->
-                    <h2>Cars</h2>
+                    <h2>السيارات</h2>
                     <div class="table-responsive">
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
-                                    <th>Image</th>
-                                    <th>Name</th>
-                                    <th>Brand</th>
-                                    <th>Location</th>
+                                    <th>الصورة</th>
+                                    <th>الاسم</th>
+                                    <th>العلامة التجارية</th>
+                                    <th>الموقع</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach($cars as $car)
                                 <tr>
-                                    <td><img src="{{ asset('storage/' . $car->image_url) }}" alt="Car Image" width="100"></td>
+                                    <td><img src="{{ asset('storage/' . $car->image_url) }}" alt="صورة السيارة" width="100"></td>
                                     <td>{{ $car->name }}</td>
                                     <td>{{ $car->brand }}</td>
                                     <td>{{ $car->location->city }}</td>
@@ -31,16 +31,16 @@
                             </tbody>
                         </table>
                     </div>
-                    <a href="{{ route('admin.cars.index') }}" class="btn btn-secondary">View More Cars</a>
+                    <a href="{{ route('admin.cars.index') }}" class="btn btn-secondary">عرض المزيد من السيارات</a>
 
                     <!-- Locations Section -->
-                    <h2 class="mt-4">Locations</h2>
+                    <h2 class="mt-4">المواقع</h2>
                     <div class="table-responsive">
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
-                                    <th>City</th>
-                                    <th>Branch Name</th>
+                                    <th>المدينة</th>
+                                    <th>اسم الفرع</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -53,19 +53,19 @@
                             </tbody>
                         </table>
                     </div>
-                    <a href="{{ route('admin.location.index') }}" class="btn btn-secondary">View More Locations</a>
+                    <a href="{{ route('admin.location.index') }}" class="btn btn-secondary">عرض المزيد من المواقع</a>
 
                     <!-- Bookings Section -->
-                    <h2 class="mt-4">Bookings</h2>
+                    <h2 class="mt-4">الحجوزات</h2>
                     <div class="table-responsive">
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
-                                    <th>Car</th>
-                                    <th>Pickup Location</th>
-                                    <th>Drop-off Location</th>
-                                    <th>Start Date</th>
-                                    <th>End Date</th>
+                                    <th>السيارة</th>
+                                    <th>موقع الاستلام</th>
+                                    <th>موقع التسليم</th>
+                                    <th>تاريخ البدء</th>
+                                    <th>تاريخ الانتهاء</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -81,18 +81,18 @@
                             </tbody>
                         </table>
                     </div>
-                    <a href="{{ route('bookings.index') }}" class="btn btn-secondary">View More Bookings</a>
+                    <a href="{{ route('bookings.index') }}" class="btn btn-secondary">عرض المزيد من الحجوزات</a>
 
                     <!-- Payments Section -->
-                    <h2 class="mt-4">Payments</h2>
+                    <h2 class="mt-4">المدفوعات</h2>
                     <div class="table-responsive">
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
-                                    <th>Booking ID</th>
-                                    <th>Amount</th>
-                                    <th>Payment Method</th>
-                                    <th>Status</th>
+                                    <th>رقم الحجز</th>
+                                    <th>المبلغ</th>
+                                    <th>طريقة الدفع</th>
+                                    <th>الحالة</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -107,7 +107,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <a href="{{ route('admin.payments.index') }}" class="btn btn-secondary">View More Payments</a>
+                    <a href="{{ route('admin.payments.index') }}" class="btn btn-secondary">عرض المزيد من المدفوعات</a>
 
                 </div>
             </div>

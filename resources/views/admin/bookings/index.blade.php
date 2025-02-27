@@ -4,19 +4,19 @@
 
 
 <div class="container">
-    <h2>My Bookings</h2>
+    <h2>حجوزاتي</h2>
     @if(session('success'))
         <div class="alert alert-success">{{ session('success') }}</div>
     @endif
     <table class="table">
         <thead>
             <tr>
-                <th>Car</th>
-                <th>Pickup Location</th>
-                <th>Drop-off Location</th>
-                <th>Start Date</th>
-                <th>End Date</th>
-                <th>Status</th>
+                <th>السيارة</th>
+                <th>موقع الاستلام</th>
+                <th>موقع التسليم</th>
+                <th>تاريخ البدء</th>
+                <th>تاريخ الانتهاء</th>
+                <th>الحالة</th>
             </tr>
         </thead>
         <tbody>
@@ -32,7 +32,7 @@
             @endforeach
         </tbody>
     </table>
-    <a href="{{ route('admin.index') }}" class="btn btn-secondary mb-3">Back</a>
+    <a href="{{ route('admin.index') }}" class="btn btn-secondary mb-3">رجوع</a>
 </div>
 
 <script>

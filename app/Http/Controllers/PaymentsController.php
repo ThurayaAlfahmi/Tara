@@ -21,13 +21,27 @@ class PaymentsController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create($bookingId)
+
+    public function updatePaymentStatus($paymentId)
     {
-        //
-        
-        $booking = bookings::findOrFail($bookingId); // Fetch booking details
-        return view('payments.create', compact('booking'));
+        // Find the payment record by ID
+        $payment = payments::findOrFail($paymentId);
+    
+        // Update the payment status to 'completed'
+        $payment->status = 'completed';
+        $payment->save();
+    
+        // Optionally, update the booking status if needed
+        $booking = $payment->booking; // Assuming relationship is defined
+        if ($payment->status == 'completed') {
+            $booking->status = 'confirmed';  // Change booking status to confirmed
+            $booking->save();
+        }
+    
+        // Redirect back to the payment list with a success message
+        return redirect()->route('admin.payments.index')->with('success', 'تم تأكيد الدفع بنجاح!');
     }
+    
 
     /**
      * Store a newly created resource in storage.
@@ -77,19 +91,31 @@ class PaymentsController extends Controller
          $request->validate([
              'payment_method' => 'required|in:credit_card,paypal,cash',
          ]);
- 
+     
+         // Handle the payment method and set the status accordingly
+         $paymentStatus = 'completed';  // Default status for credit_card and paypal
+     
+         if ($request->input('payment_method') == 'cash') {
+             $paymentStatus = 'pending';  // If payment is cash, it's pending until admin confirms
+             
+         }
+     
          // Create a new payment record
          payments::create([
              'booking_id' => $booking->id,
              'amount' => $booking->total_price,
              'payment_method' => $request->input('payment_method'),
-             'status' => 'completed', // Or 'pending' depending on your logic
+             'status' => $paymentStatus,
          ]);
- 
-         // Update the booking status
-         $booking->update(['status' => 'confirmed']);
- 
+     
+         // Update the booking status based on payment
+         if ($paymentStatus == 'completed') {
+             // If payment is completed (not cash), confirm the booking
+             $booking->update(['status' => 'confirmed']);
+         }
+     
          // Redirect to a success page or show a success message
          return redirect()->route('payment.success')->with('success', 'Payment processed successfully!');
      }
+     
 }

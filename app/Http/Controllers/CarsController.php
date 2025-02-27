@@ -11,11 +11,27 @@ class CarsController extends Controller
     // Display a listing of the cars
     public function index()
     {
-       // Fetch cars with their locations (eager load)
     $cars = cars::with('location')->get();
-
     return view('admin.cars.index', compact('cars'));
     }
+
+    public function showCars(Request $request)
+    {
+        
+            $carTypes = cars::select('car_type')->distinct()->get();
+            $car_type = $request->input('car_type');
+            if ($car_type) {
+                $cars = cars::where('car_type', $car_type)->get();
+            } else {
+                $cars = cars::all(); // If no car type is selected, show all cars
+            }
+        
+            return view('user.cars', compact('cars', 'carTypes'));
+        
+        
+    }
+    
+   
 
     // Show the form for creating a new car
     public function create()
